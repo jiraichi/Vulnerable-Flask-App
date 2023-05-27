@@ -7,8 +7,12 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python-3.10@master
-      - name: run Snyk Open Source Test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Run Snyk Test
         run: snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: run Snyk Code Test
         run: snyk code test
         env:
