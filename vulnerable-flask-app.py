@@ -15,6 +15,7 @@ def main_page():
 
 @app.route("/user/<string:name>")
 def search_user(name):
+    print('test')
     con = sqlite3.connect("test.db")
     cur = con.cursor()
     cur.execute("select * from test where username = '%s'" % name)
